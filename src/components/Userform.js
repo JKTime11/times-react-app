@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 export default function Userform() {
@@ -10,6 +11,10 @@ export default function Userform() {
     }
     const save=function(event) {
         console.log(userform);
+        const promise=axios.post("http://localhost:4200/users", userform);
+        promise.then(function(response){
+            console.log(response);
+        });
     }
     return (
         <div>
@@ -18,5 +23,5 @@ export default function Userform() {
             <input type="number" name="age" value={userform.age} onChange={handleEvent}></input>
             <button onClick={save}>Save</button>
         </div>
-    )
+    );
 }

@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "name": "Sandeep Kumar",
+      "location": "Jhajjar, Haryana",
+      "id": 2
+    },
+    {
+      "name": "Sandeep",
+      "location": "Haryana",
+      "id": 3
+    },
+    {
+      "name": "Sandeep",
+      "location": "Kunjia, Haryana",
+      "id": 4
+    },
+    {
+      "firstname": "Sandeep",
+      "age": 20,
+      "id": 5
+    },
+    {
+      "firstname": "Sandeep Kumar",
+      "age": "22",
+      "id": 6
+    },
+    {
+      "firstname": "Sandeep Kunjia",
+      "age": "25",
+      "id": 7
+    }
+  ]
+}
