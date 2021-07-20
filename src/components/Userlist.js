@@ -1,6 +1,8 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 
+import Counter from "./Counter";
+
 export default function Userlist() {
     const [users, setUsers]=useState([]);
 
@@ -15,6 +17,7 @@ export default function Userlist() {
 
     return (
         <div>
+            <Counter count={users.length}></Counter>
             {/* add class table */}
             <table className="table table-bordered table-hover table-responsive">
                 <thead>
