@@ -2,11 +2,16 @@ import axios from "axios";
 import { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 
+import Message from "./Message";
+
 export default function Userform() {
     const [userform, setUserform]=useState({
         firstname: "Sandeep",
         age: 20
     });
+    const [saveClicked, setSaveClicked]=useState(false);
+    const [saved, setSaved]=useState(null);
+
     const handleEvent= event => setUserform({...userform, [event.target.name]:event.target.value});
 
     const handleDropdownList = (event) => {
@@ -15,13 +20,22 @@ export default function Userform() {
     }
     
     const save=() => {
+        setSaveClicked(true);
         console.log(userform);
         const promise=axios.post("http://localhost:4200/users", userform);
-        promise.then(response => console.log(response));
+        promise.then(response => {
+            console.log(response);
+            setSaved(true);
+        }).catch(error => {
+            console.log(error);
+            setSaved(false);
+        });
     }
+    
     return (
         <div>
             <h3>Create User</h3>
+            {saveClicked && <Message saved={saved}></Message>}
             <div className="form-group">
                 <label htmlFor="firstname">First Name : </label>
                 <input className="form-control" type="text" name="firstname" 
@@ -47,7 +61,9 @@ export default function Userform() {
                     <Dropdown.Item>JavaScript</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
+            <br></br>
             <button className="btn btn-primary" onClick={save}>Save</button>
+            
         </div>
     );
 }
