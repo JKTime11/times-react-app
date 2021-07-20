@@ -21,14 +21,16 @@ export default function Userlist() {
                     <tr>
                         <th>First Name</th>
                         <th>Age</th>
+                        <th>Joining Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         users.map((user, index) => 
-                            (<tr>
+                            (<tr key={user.id}>
                                 <td>{user.firstname}</td>
                                 <td>{user.age}</td>
+                                <td>{user.joiningDate}</td>
                             </tr>)
                         )
                     }
