@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import Dropdown from "react-bootstrap/Dropdown";
 
 export default function Userform() {
     const [userform, setUserform]=useState({
@@ -8,13 +9,9 @@ export default function Userform() {
     });
     const handleEvent= event => setUserform({...userform, [event.target.name]:event.target.value});
 
-    const handleDropdown = (event) => {
-        event.target.parentNode.childNodes[1].style.display="block";
-    }
-
     const handleDropdownList = (event) => {
-        console.log(event.target);
-        event.target.parentNode.style.display="none";
+        console.log(event.target.textContent);
+        setUserform({...userform, skill: event.target.textContent});
     }
     
     const save=() => {
@@ -40,15 +37,16 @@ export default function Userform() {
                 <input className="form-control" type="date" name="joiningDate" value={userform.joiningDate} 
                     onChange={handleEvent}></input>
             </div>
-            <div className="dropdown">
-                <button className="btn btn-primary dropdown-toggle" onClick={handleDropdown}>Select Skill
-                <span className="caret"></span></button>
-                <ul className="dropdown-menu" onClick={handleDropdownList}>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                </ul>
-            </div>
+            <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Select Skill
+                </Dropdown.Toggle>
+                <Dropdown.Menu onClick={handleDropdownList}>
+                    <Dropdown.Item>HTML</Dropdown.Item>
+                    <Dropdown.Item>CSS</Dropdown.Item>
+                    <Dropdown.Item>JavaScript</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
             <button className="btn btn-primary" onClick={save}>Save</button>
         </div>
     );
