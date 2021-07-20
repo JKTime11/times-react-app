@@ -6,15 +6,12 @@ export default function Userform() {
         firstname: "Sandeep",
         age: 20
     });
-    const handleEvent=function(event) {
-        setUserform({...userform, [event.target.name]:event.target.value});
-    }
-    const save=function(event) {
+    const handleEvent= event => setUserform({...userform, [event.target.name]:event.target.value});
+    
+    const save=() => {
         console.log(userform);
         const promise=axios.post("http://localhost:4200/users", userform);
-        promise.then(function(response){
-            console.log(response);
-        });
+        promise.then(response => console.log(response));
     }
     return (
         <div>
