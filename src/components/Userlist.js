@@ -42,6 +42,7 @@ export default function Userlist() {
                         <th>First Name</th>
                         <th>Age</th>
                         <th>Joining Date</th>
+                        <th>Skill</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,6 +52,7 @@ export default function Userlist() {
                                 <td>{user.firstname}</td>
                                 <td>{user.age}</td>
                                 <td>{user.joiningDate}</td>
+                                <td>{user.skill}</td>
                                 <td>
                                     <button className="btn btn-danger" 
                                         style={{width: '40%', height: '100%', margin: '0 30%'}} onClick={()=>{deleteUser(user.id)}}>

@@ -1,34 +1,52 @@
 {
   "users": [
     {
-      "name": "Sandeep Kumar",
-      "location": "Jhajjar, Haryana",
-      "id": 2
+      "firstname": "Mandeep",
+      "age": "29",
+      "joiningDate": "2021-07-10",
+      "skill": "JavaScript",
+      "id": 15
     },
     {
-      "name": "Sandeep",
-      "location": "Haryana",
-      "id": 3
+      "firstname": "Hari",
+      "age": "30",
+      "joiningDate": "2021-07-18",
+      "skill": "JavaScript",
+      "id": 17
     },
     {
-      "name": "Sandeep",
-      "location": "Kunjia, Haryana",
-      "id": 4
-    },
-    {
-      "firstname": "Sandeep",
-      "age": 20,
-      "id": 5
-    },
-    {
-      "firstname": "Sandeep Kumar",
-      "age": "22",
-      "id": 6
+      "firstname": "Krishan",
+      "age": "24",
+      "joiningDate": "2021-07-01",
+      "skill": "JavaScript",
+      "id": 19
     },
     {
       "firstname": "Sandeep Kunjia",
-      "age": "25",
-      "id": 7
+      "age": "22",
+      "joiningDate": "2021-07-15",
+      "skill": "HTML",
+      "id": 20
+    },
+    {
+      "firstname": "Jai",
+      "age": "19",
+      "joiningDate": "2021-07-02",
+      "skill": "JavaScript",
+      "id": 22
+    },
+    {
+      "firstname": "Hansraj",
+      "age": "27",
+      "joiningDate": "2021-07-17",
+      "skill": "React",
+      "id": 23
     }
+  ],
+  "skills": [
+    "HTML",
+    "JavaScript",
+    "CSS",
+    "React"
   ]
 }

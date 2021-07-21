@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 
 import Message from "./Message";
@@ -11,6 +11,12 @@ export default function Userform() {
     });
     const [saveClicked, setSaveClicked]=useState(false);
     const [saved, setSaved]=useState(null);
+    const [skills, setSkills]=useState([]);
+
+    useEffect(()=>{
+        const promise=axios.get(process.env.REACT_APP_SKILLS_URL);
+        promise.then(response =>setSkills(response.data));
+    }, []);
 
     const handleEvent= event => setUserform({...userform, [event.target.name]:event.target.value});
 
@@ -56,9 +62,13 @@ export default function Userform() {
                     Select Skill
                 </Dropdown.Toggle>
                 <Dropdown.Menu onClick={handleDropdownList}>
-                    <Dropdown.Item>HTML</Dropdown.Item>
-                    <Dropdown.Item>CSS</Dropdown.Item>
-                    <Dropdown.Item>JavaScript</Dropdown.Item>
+                    {
+                        skills.map((skill) => {
+                            return (
+                                <Dropdown.Item>{skill}</Dropdown.Item>
+                            )
+                        })
+                    }
                 </Dropdown.Menu>
             </Dropdown>
             <br></br>
