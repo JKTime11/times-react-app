@@ -11,17 +11,19 @@ export default function Userlist() {
         if(users.length!==0) {
             return;
         }
-        const promise=axios.get('http://localhost:4200/users');
+        const promise=axios.get(process.env.REACT_APP_SERVER_URL);
         promise.then(response=> setUsers(response.data));
     });
 
     const deleteUser = (id) => {
-        const promise=axios.delete('http://localhost:4200/users/'+id);
+        const promise=axios.delete(process.env.REACT_APP_SERVER_URL+id);
         promise.then(response => {
             console.log(response);
-            setUsers(users.filter((user)=> user.id!==id));
+            let remainingUsers = users;
+            setUsers(remainingUsers.filter((user)=> user.id!==id));
         });
     }
+
 
     return (
         <div>

@@ -22,7 +22,7 @@ export default function Userform() {
     const save=() => {
         setSaveClicked(true);
         console.log(userform);
-        const promise=axios.post("http://localhost:4200/users", userform);
+        const promise=axios.post(process.env.REACT_APP_SERVER_URL, userform);
         promise.then(response => {
             console.log(response);
             setSaved(true);
