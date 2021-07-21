@@ -24,10 +24,17 @@ export default function Userlist() {
         });
     }
 
-
+    const sortByAge=()=>{
+        let sortedUsers = users;
+        sortedUsers.sort((user1, user2)=>user1.age-user2.age)
+        setUsers([...sortedUsers]);
+    };
+    
     return (
         <div>
             <Counter count={users.length}></Counter>
+            <button className="btn btn-primary" onClick={sortByAge}>SORT BY AGE</button>
+            <br></br><br></br>
             {/* add class table */}
             <table className="table table-bordered table-hover table-responsive">
                 <thead>
