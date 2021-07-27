@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 
 import Message from "./Message";
+import {getAllSkills} from '../service';
 
 export default function Userform() {
     const [userform, setUserform]=useState({
@@ -14,28 +15,19 @@ export default function Userform() {
     const [skills, setSkills]=useState([]);
 
     useEffect(()=>{
-        const promise=axios.get(process.env.REACT_APP_SKILLS_URL);
-        promise.then(response =>setSkills(response.data));
+        // const promise=axios.get(process.env.REACT_APP_SKILLS_URL);
+        // promise.then(response =>setSkills(response.data));
+        getAllSkills(response =>setSkills(response.data));
     }, []);
 
     const handleEvent= event => setUserform({...userform, [event.target.name]:event.target.value});
 
-    const handleDropdownList = (event) => {
-        console.log(event.target.textContent);
-        setUserform({...userform, skill: event.target.textContent});
-    }
+    const handleDropdownList = (event) => setUserform({...userform, skill: event.target.textContent});
     
     const save=() => {
         setSaveClicked(true);
-        console.log(userform);
         const promise=axios.post(process.env.REACT_APP_SERVER_URL, userform);
-        promise.then(response => {
-            console.log(response);
-            setSaved(true);
-        }).catch(error => {
-            console.log(error);
-            setSaved(false);
-        });
+        promise.then(() => setSaved(true)).catch(() => setSaved(false));
     }
     
     return (
